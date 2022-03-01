@@ -1,5 +1,4 @@
-﻿using FindlApp.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,24 +8,30 @@ namespace FindlApp.Servceis
 {
     public class CheckWordService
     {
-        Words m_words;
+        List<string> m_words = new List<string>();
         string m_currentWord;
 
-        public CheckWordService(Words words)
+        public CheckWordService()
         {
-            m_words = words;
+            string[] words = System.IO.File.ReadAllLines("words - simple.txt");
+            foreach (string line in words)
+            {
+                m_words.Add(line);
+            }
         }
 
         public bool Check(string guess)
         {
-            return m_words.Exists(guess);
+            return m_words.Contains(guess);
         }
+
+        public int Size => m_words.Count;
 
         public void ChooseNewWord()
         {
             Random random = new Random();
-            int r = random.Next(m_words.Size);
-            m_currentWord = m_words.Get(r);
+            int index = random.Next(Size);
+            m_currentWord = m_words.ElementAt(index);
         }
 
         public string CurrentWord => m_currentWord;

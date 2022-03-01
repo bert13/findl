@@ -1,5 +1,4 @@
-﻿using FindlApp.Models;
-using FindlApp.Servceis;
+﻿using FindlApp.Servceis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +27,7 @@ namespace FindlApp
         public MainWindow()
         {
             InitializeComponent();
-            m_checkWordService = new CheckWordService(new Words());
+            m_checkWordService = new CheckWordService();
             m_guessNumber = 0;
         }
 
