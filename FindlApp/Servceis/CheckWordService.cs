@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FindlApp.Servceis
 {
-    public class CheckWordService
+    public class CheckWordService : ICheckWordService
     {
         List<string> m_words = new List<string>();
         string m_currentWord;
